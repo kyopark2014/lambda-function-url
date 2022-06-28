@@ -187,3 +187,6 @@ $ node client-url.js
 [AWS Lambda: function URL is live!](https://lumigo.io/blog/aws-lambda-function-url-is-live/)
 
 [The Pros and Cons of AWS Lambda Function URLs](https://levelup.gitconnected.com/the-pros-and-cons-of-aws-lambda-function-urls-5868c9dacf20)
+
+[Introducing Lambda Function URLs](https://dev.to/aws-builders/introducing-lambda-function-urls-4ahd)
+
