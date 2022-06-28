@@ -16,6 +16,13 @@ AWS의 대표적인 서비리스 서비스인 Lambda는 인프라에 대한 고�
 
 [Lambda 함수 URL 설정](https://github.com/kyopark2014/simple-data-aquisition-unit/blob/main/lambda-for-functional-url.md)에 따라 Lambda 함수 URL 기능을 Enable 할 수 있습니다.
 
+
+Lambda 생성시 [Advanced settings]에서 [Enable function URL]을 생성하거나 아래와 같이 Lambda Console에서 [Configuration] - [Function URL] - [Create function URL]에서 설정 할 수 있습니다. 
+
+![noname](https://user-images.githubusercontent.com/52392004/176203261-e8985359-6e7e-4d1e-988c-2b77b9a11d60.png)
+
+
+
 Lambda 함수 URL을 Enable한 후, 아래와 같이 htts endpoint로 사용할 수 있는 URL을 알 수 있습니다.
 
 ![noname](https://user-images.githubusercontent.com/52392004/165218603-55d9c145-676e-4c40-a9f5-f46bb8a6d34f.png)
