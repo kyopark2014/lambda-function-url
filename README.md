@@ -176,3 +176,5 @@ $ node client-url.js
 [AWS Lambda Function URL 발표 – 단일 기능 마이크로서비스용 내장 HTTPS 엔드포인트(Alex Casalboni)](https://aws.amazon.com/ko/blogs/korea/announcing-aws-lambda-function-urls-built-in-https-endpoints-for-single-function-microservices/)
 
 [AWS Lambda: function URL is live!](https://lumigo.io/blog/aws-lambda-function-url-is-live/)
+
+https://levelup.gitconnected.com/the-pros-and-cons-of-aws-lambda-function-urls-5868c9dacf20
