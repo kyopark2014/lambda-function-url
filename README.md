@@ -2,6 +2,17 @@
 
 여기에서 [AWS CDK](https://github.com/kyopark2014/technical-summary/blob/main/cdk-introduction.md)로 Lambda funtion url을 생성하고 활용하는것에 대한 예제를 보여주고자 합니다. Lambda funtional url의 보안을 IAM을 통해 수행되고 이를 위해 client에서 temperary security credential을 이용한 접속 방법도 가이드 합니다. 
 
+## Lambda 함수 URL 이란?
+
+AWS의 대표적인 서비리스 서비스인 Lambda는 인프라에 대한 고민없이 개발에만 집중할 수 있어 편리하며, Concurrency에 기반한 오토 스케일링으로 부하의 변동에 쉽게 대응할 수 있으며, 사용하지 않을 경우에는 비용이 발생하지 않아서 경제적입니다. 하지만 그동안 외부에서 Lambda를 직접 호출 할 수 없어, API Gateway를 Endpoint로 사용하여야 했습니다. API Gateway는 다양한 인증과 편리한 기능을 제공하나, 하나 또는 소수의 API를 간단히 구현하여 Private하게 사용하는 경우에도 API Gateway를 사용하여야 했습니다. 아래 그림은 [일반적인 serverless architecture](https://faun.pub/build-a-rest-api-with-api-gateway-aws-lambda-dynamodb-aws-cdk-616d1e17c128)로서, DynamoDB를 조회하는 Lambda 함수를 위하여 API Gateway를 사용하고 있습니다. 
+
+![image](https://user-images.githubusercontent.com/52392004/171417037-0d2f02a3-a09a-4e80-9ab5-5d993b2b9dc9.png)
+
+[AWS Lambda 함수 URL](https://aws.amazon.com/ko/about-aws/whats-new/2022/04/aws-lambda-function-urls-built-in-https-endpoints/)이 2022년 4월에 상용 적용됨으로 인해, API Gateway없이 Lambda를 HTTPS 엔드포인트로 사용할 수 있게 되었습니다. 아래 그림은 Lambda 함수 URL을 통해 DynamoDB를 조회하는 Architecture를 보여줍니다. 여기서, API Gateway 없이 Lambda로 직접 접속할 수 있어서 간단하고 편리하게 API를 제공 할 수 있습니다. 
+
+![image](https://user-images.githubusercontent.com/52392004/171504682-3599dbdf-3043-4657-9cf0-fceab7901a42.png)
+
+
 
 ## AWS Console을 이용한 Lambda 함수 URL 생성하기
 
