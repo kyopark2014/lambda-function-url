@@ -42,7 +42,9 @@ Lambda 함수 URL은 인증 방식으로 AWS Identity and Access Management(IAM)
 
 ![image](https://user-images.githubusercontent.com/52392004/171420558-e491ca84-b26e-43c5-af95-a1da86493bb9.png)
 
-IAM Credential은 AccessKeyId와 SecretAccessKey으로 구성되는데, 외부에 공개되지 않도록 세심한 주의가 필요합니다. 따라서, client에서 IAM Credential을 직접 사용하기 보다는 temparary security credential을 생성하여 사용하는것이 바람직합니다. Temporary security credentials의 expire time을 설정하면, 수분에서 수시간까지 변경 할 수 있으며, 시간이 만료되면 더이상 사용할 수 없습니다. 
+IAM Credential은 AccessKeyId와 SecretAccessKey으로 구성되는데, 외부에 공개되지 않도록 세심한 주의가 필요합니다. 따라서, client에서 IAM Credential을 직접 사용하기 보다는 [Temparary security credential](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_temp.html)을 생성하여 사용하는것이 바람직합니다. [Temporary security credentials의 expire time을 설정](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/prog-services-sts.html)하면,  최소 15분에서 최대 36시간까지 설정할 수 있으며, 기본값은 12시간입니다. 시간이 만료되면 더이상 사용할 수 없습니다.
+Temporary security credentials은 STS(Security Token Server)을 통해 획득하는데, [resource-based policies를 따르므로 Lambda를 이용한 STS 연결](https://github.com/kyopark2014/aws-security-token-service/tree/main/lambda-for-sts)과 같이 AWS SDK를 이용해 생성할 수 있습니다.
+
 
 Temporary security credentials은 STS(Security Token Server)을 통해 획득하는데, resource-based policies를 따르므로 [Lambda를 이용한 STS 연결](https://github.com/kyopark2014/aws-security-token-service/tree/main/lambda-for-sts)과 같이 AWS SDK를 이용해 생성할 수 있습니다. 
 
