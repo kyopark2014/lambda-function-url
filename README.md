@@ -39,7 +39,7 @@ Temporary security credentials은 STS(Security Token Server)을 통해 획득하
 
 [Lambda 함수 URL을 호출하는 Client 만들기](https://github.com/kyopark2014/lambda-function-url/tree/main/client)에서는 Temperary Security Credential을 이용하여 안전하게 Lambda 함수 URL을 호출하는 Cliet에 대해 설명합니다. 
 
-## Lambda 함수 URL Drawback
+## Lambda 함수 URL 활용
 
 Lambda 함수 URL은 API Gateway의 Lambda proxy Integration처럼 동작하므로, 클라이언트가 다른 경로(Resource)나 POST/GET등 다른 method를 쓰더라도 모두 Lambda 함수에서 처리할 수 있습니다. 즉, Lambda 함수 URL을 사용함으로 구조를 단순화하고 쉽고 편리하게 API 서버를 생성하고 이용 할 수 있지만, Lambda 함수 URL은 Custom URL을 생성할 수 없는 단점도 가지고 있습니다. Lambda 함수 URL로 파일 전송시에 [Lambda의 payload](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)는 6MB까지 가능하여, [API Gateway의 Payload](https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)인 10MB에 비하여 상대적으로 적습니다. 
 
