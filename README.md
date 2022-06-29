@@ -60,7 +60,7 @@ Lambda 함수 URL로 파일 전송시에 [Lambda의 payload](https://docs.aws.am
 
 [AWS STS를 이용한 Temparary security credential 활용하기](https://github.com/kyopark2014/aws-security-token-service)
 
-[AWS Lambda Function URL 발표 – 단일 기능 마이크로서비스용 내장 HTTPS 엔드포인트(Alex Casalboni)](https://aws.amazon.com/ko/blogs/korea/announcing-aws-lambda-function-urls-built-in-https-endpoints-for-single-function-microservices/)
+[Announcing AWS Lambda Function URLs: Built-in HTTPS Endpoints for Single-Function Microservices](https://aws.amazon.com/ko/blogs/aws/announcing-aws-lambda-function-urls-built-in-https-endpoints-for-single-function-microservices/)
 
 [AWS Lambda: function URL is live!](https://lumigo.io/blog/aws-lambda-function-url-is-live/)
 
