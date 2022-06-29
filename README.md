@@ -39,7 +39,7 @@ Temporary security credentials은 STS(Security Token Server)을 통해 획득하
 
 [Lambda 함수 URL을 호출하는 Client 만들기](https://github.com/kyopark2014/lambda-function-url/tree/main/client)에서는 Temperary Security Credential을 이용하여 안전하게 Lambda 함수 URL을 호출하는 Cliet에 대해 설명합니다. 
 
-## Lambda 함후 URL Drawback
+## Lambda 함수 URL Drawback
 
 Lambda 함수 URL은 Custom URL을 생성할 수 없고, WAF나 Shield와 같은 Security를 사용할 수 없습니다. CloudFront을 이용하여 이를 해결할 수 있으나 API Gateway를 제거하여 얻어진 장점이 사라집니다. 
 
