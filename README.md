@@ -32,7 +32,7 @@ IAM Credential은 AccessKeyId와 SecretAccessKey으로 구성되는데, 외부�
 Temporary security credentials은 STS(Security Token Server)을 통해 획득하는데, [resource-based policies를 따르므로 Lambda를 이용한 STS 연결](https://github.com/kyopark2014/aws-security-token-service/tree/main/lambda-for-sts)과 같이 AWS SDK를 이용해 생성할 수 있습니다.
 
 
-Temporary security credentials은 STS(Security Token Server)을 통해 획득하는데, resource-based policies를 따르므로 [Lambda를 이용한 STS 연결](https://github.com/kyopark2014/aws-security-token-service/tree/main/lambda-for-sts)과 같이 AWS SDK를 이용해 생성할 수 있습니다. 
+Temporary security credentials은 STS(Security Token Server)을 통해 획득하는데, [resource-based policies](https://docs.amazonaws.cn/en_us/lambda/latest/dg/access-control-resource-based.html)를 따르므로 [Lambda를 이용한 STS 연결](https://github.com/kyopark2014/aws-security-token-service/tree/main/lambda-for-sts)과 같이 AWS SDK를 이용해 생성할 수 있습니다. 
 
  
 ## Lambda 함수 URL을 호출하는 Client 만들기
