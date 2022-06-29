@@ -2,29 +2,29 @@
 
 여기에서는 Lambda Function URL에 대해 이해하고, [AWS CDK](https://github.com/kyopark2014/technical-summary/blob/main/cdk-introduction.md)로 Lambda funtion url을 생성하고 활용하는것에 대한 예제를 보여줍니다. 또한 Lambda funtional url의 보안을 IAM을 통해 수행되고 이를 위해 client에서 temperary security credential을 이용한 접속 방법도 가이드 합니다. 
 
-## Lambda 함수 URL 이란?
+## Lambda Function URL 이란?
 
 AWS의 대표적인 서비리스 서비스인 Lambda는 인프라에 대한 고민없이 개발에만 집중할 수 있어 편리하며, Concurrency에 기반한 오토 스케일링으로 부하의 변동에 쉽게 대응할 수 있으며, 사용하지 않을 경우에는 비용이 발생하지 않아서 경제적입니다. 하지만 그동안 외부에서 Lambda를 직접 호출 할 수 없어, API Gateway를 Endpoint로 사용하여야 했습니다. API Gateway는 다양한 인증과 편리한 기능을 제공하나, 하나 또는 소수의 API를 간단히 구현하여 Private하게 사용하는 경우에도 API Gateway를 사용하여야 했습니다. 아래 그림은 [일반적인 serverless architecture](https://faun.pub/build-a-rest-api-with-api-gateway-aws-lambda-dynamodb-aws-cdk-616d1e17c128)로서, DynamoDB를 조회하는 Lambda 함수를 위하여 API Gateway를 사용하고 있습니다. 
 
 ![image](https://user-images.githubusercontent.com/52392004/171417037-0d2f02a3-a09a-4e80-9ab5-5d993b2b9dc9.png)
 
-[AWS Lambda 함수 URL](https://aws.amazon.com/ko/about-aws/whats-new/2022/04/aws-lambda-function-urls-built-in-https-endpoints/)이 2022년 4월에 상용 적용됨으로 인해, API Gateway없이 Lambda를 HTTPS 엔드포인트로 사용할 수 있게 되었습니다. 아래 그림은 Lambda 함수 URL을 통해 DynamoDB를 조회하는 Architecture를 보여줍니다. 여기서, API Gateway 없이 Lambda로 직접 접속할 수 있어서 간단하고 편리하게 API를 제공 할 수 있습니다. 
+[AWS Lambda Function URL](https://aws.amazon.com/ko/about-aws/whats-new/2022/04/aws-lambda-function-urls-built-in-https-endpoints/)이 2022년 4월에 상용 적용됨으로 인해, API Gateway없이 Lambda를 HTTPS 엔드포인트로 사용할 수 있게 되었습니다. 아래 그림은 Lambda Function URL을 통해 DynamoDB를 조회하는 Architecture를 보여줍니다. 여기서, API Gateway 없이 Lambda로 직접 접속할 수 있어서 간단하고 편리하게 API를 제공 할 수 있습니다. 
 
 ![image](https://user-images.githubusercontent.com/52392004/171504682-3599dbdf-3043-4657-9cf0-fceab7901a42.png)
 
 
 
-## AWS Console을 이용한 Lambda 함수 URL 생성하기
+## AWS Console을 이용한 Lambda Function URL 생성하기
 
-[AWS Console에서 Lambda 함수 URL 생성하기](https://github.com/kyopark2014/lambda-function-url/blob/main/console.md)에서는 AWS Console을 이용해 직관적으로 Lambda 함수 URL을 생성하는것을 설명합니다. 
+[AWS Console에서 Lambda Function URL 생성하기](https://github.com/kyopark2014/lambda-function-url/blob/main/console.md)에서는 AWS Console을 이용해 직관적으로 Lambda Function URL을 생성하는것을 설명합니다. 
 
-## AWS CDK를 이용한 Lambda 함수 URL 생성하기
+## AWS CDK를 이용한 Lambda Function URL 생성하기
  
-[AWS CDK를 이용한 Lambda 함수 URL 생성](https://github.com/kyopark2014/lambda-function-url/blob/main/cdk-lambda/README.md)에서는 IaC(Infrastructure as Code)를 이용해 손쉽게 Lambda 함수 URL을 생성하는것을 설명합니다. 
+[AWS CDK를 이용한 Lambda Function URL 생성](https://github.com/kyopark2014/lambda-function-url/blob/main/cdk-lambda/README.md)에서는 IaC(Infrastructure as Code)를 이용해 손쉽게 Lambda Function URL을 생성하는것을 설명합니다. 
 
-## Lambda 함수 URL 보안
+## Lambda Function URL 보안
 
-Lambda 함수 URL은 인증 방식으로 AWS Identity and Access Management(IAM)만을 제공하므로, 외부 접속을 제한하기 위해서는 IAM을 사용하여야 합니다. 
+Lambda Function URL은 인증 방식으로 AWS Identity and Access Management(IAM)만을 제공하므로, 외부 접속을 제한하기 위해서는 IAM을 사용하여야 합니다. 
 
 ![image](https://user-images.githubusercontent.com/52392004/171420558-e491ca84-b26e-43c5-af95-a1da86493bb9.png)
 
@@ -35,18 +35,18 @@ Temporary security credentials은 STS(Security Token Server)을 통해 획득하
 Temporary security credentials은 STS(Security Token Server)을 통해 획득하는데, [resource-based policies](https://docs.amazonaws.cn/en_us/lambda/latest/dg/access-control-resource-based.html)를 따르므로 [Lambda를 이용한 STS 연결](https://github.com/kyopark2014/aws-security-token-service/tree/main/lambda-for-sts)과 같이 AWS SDK를 이용해 생성할 수 있습니다. 
 
  
-## Lambda 함수 URL을 호출하는 Client 만들기
+## Lambda Function URL을 호출하는 Client 만들기
 
-[Lambda 함수 URL을 호출하는 Client 만들기](https://github.com/kyopark2014/lambda-function-url/tree/main/client)에서는 Temperary Security Credential을 이용하여 안전하게 Lambda 함수 URL을 호출하는 Cliet에 대해 설명합니다. 
+[Lambda Function URL을 호출하는 Client 만들기](https://github.com/kyopark2014/lambda-function-url/tree/main/client)에서는 Temperary Security Credential을 이용하여 안전하게 Lambda Function URL을 호출하는 Cliet에 대해 설명합니다. 
 
-## Lambda 함수 URL 활용
+## Lambda Function URL 활용
 
-Lambda 함수 URL은 API Gateway의 Lambda proxy Integration처럼 동작하므로, 클라이언트가 다른 경로(Resource)나 POST/GET등 다른 method를 쓰더라도 모두 Lambda 함수에서 처리할 수 있습니다. 즉, Lambda 함수 URL을 사용함으로 구조를 단순화하고 쉽고 편리하게 API 서버를 생성하고 이용 할 수 있지만, Lambda 함수 URL은 Custom URL을 생성할 수 없는 단점도 가지고 있습니다. Lambda 함수 URL로 파일 전송시에 [Lambda의 payload](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)는 6MB까지 가능하여, [API Gateway의 Payload](https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)인 10MB에 비하여 상대적으로 적습니다. 
+Lambda Function URL은 API Gateway의 Lambda proxy Integration처럼 동작하므로, 클라이언트가 다른 경로(Resource)나 POST/GET등 다른 method를 쓰더라도 모두 하나의 Lambda 에서 처리할 수 있습니다. 즉, Lambda Function URL을 사용함으로 구조를 단순화하고 쉽고 편리하게 API 서버를 생성하고 이용 할 수 있지만, Lambda Function URL은 Custom URL을 생성할 수 없는 단점도 가지고 있습니다. Lambda Function URL로 파일 전송시에 [Lambda의 payload](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)는 6MB까지 가능하여, [API Gateway의 Payload](https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)인 10MB에 비하여 상대적으로 적습니다. 
 
-Lambda 함수 URL은 WAF나 Shield와 같은 Security를 사용할 수 없습니다. CloudFront을 이용하여 이를 해결할 수 있으나 API Gateway를 제거하여 얻어진 장점이 사라집니다. 
+Lambda Function URL은 WAF나 Shield와 같은 Security를 사용할 수 없습니다. CloudFront을 이용하여 이를 해결할 수 있으나 API Gateway를 제거하여 얻어진 장점이 사라집니다. 
 
 
-Lambda 함수 URL의 특성에 맞게 잘 사용하면, 편리한 서비리스 서비스인 Lambda 용도를 더욱 확장하여 사용자의 비지니스 용도에 최적화 할수 있을것으로 보여집니다.  
+Lambda Function URL의 특성에 맞게 잘 사용하면, 편리한 서비리스 서비스인 Lambda 용도를 더욱 확장하여 사용자의 비지니스 용도에 최적화 할수 있을것으로 보여집니다.  
  
 ## Reference 
   
