@@ -176,6 +176,14 @@ function performRequest(endpoint, headers, data, path, method, success) {
 
 $ node client-url.js
 
+
+## Lambda 함후 URL Drawback
+
+Lambda 함수 URL은 Custom URL을 생성할 수 없고, WAF나 Shield와 같은 Security를 사용할 수 없습니다. CloudFront을 이용하여 이를 해결할 수 있으나 API Gateway를 제거하여 얻어진 장점이 사라집니다. 
+
+따라서, Lambda 함수 URL의 특성에 맞게 간단하고 Private한 용도로 쓰거나, Internal 에서 유용하게 사용 하는것을 추천 드립니다 .
+
+
 ## Reference 
   
 [Lambda function URLs](https://docs.aws.amazon.com/lambda/latest/dg/lambda-urls.html?icmpid=docs_lambda_help)
