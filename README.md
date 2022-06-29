@@ -38,7 +38,7 @@ Temporary security credentials은 STS(Security Token Server)을 통해 획득하
  
 ## Lambda Function URL을 호출하는 Client 만들기
 
-[Lambda Function URL을 호출하는 Client 만들기](https://github.com/kyopark2014/lambda-function-url/tree/main/client)에서는 Temperary Security Credential을 이용하여 안전하게 Lambda Function URL을 호출하는 Cliet에 대해 설명합니다. 
+[Lambda Function URL을 호출하는 Client 만들기](https://github.com/kyopark2014/lambda-function-url/tree/main/client)에서는 Temporary Security Credential을 이용하여 안전하게 Lambda Function URL을 호출하는 Cliet에 대해 설명합니다. 
 
 ## Lambda Function URL 활용
 
