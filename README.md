@@ -51,7 +51,7 @@ Lambda 함수 URL로 파일 전송시에 [Lambda의 payload](https://docs.aws.am
 
 ## Reference 
   
-[Function URL](https://docs.aws.amazon.com/cdk/api/v1/docs/aws-lambda-readme.html#function-url)
+[Function URL - CDK](https://docs.aws.amazon.com/cdk/api/v1/docs/aws-lambda-readme.html#function-url)
 
   
 [Lambda function URLs](https://docs.aws.amazon.com/lambda/latest/dg/lambda-urls.html?icmpid=docs_lambda_help)
