@@ -34,7 +34,7 @@ Temporary security credentials은 STS(Security Token Server)을 통해 획득하
 
 Temporary security credentials은 STS(Security Token Server)을 통해 획득하는데, resource-based policies를 따르므로 [Lambda를 이용한 STS 연결](https://github.com/kyopark2014/aws-security-token-service/tree/main/lambda-for-sts)과 같이 AWS SDK를 이용해 생성할 수 있습니다. 
 
-
+ 
 ## Lambda 함수 URL을 호출하는 Client 만들기
 
 [Lambda 함수 URL을 호출하는 Client 만들기](https://github.com/kyopark2014/lambda-function-url/tree/main/client)에서는 Temperary Security Credential을 이용하여 안전하게 Lambda 함수 URL을 호출하는 Cliet에 대해 설명합니다. 
@@ -46,7 +46,7 @@ Lambda 함수 URL은 Custom URL을 생성할 수 없고, WAF나 Shield와 같은
 따라서, Lambda 함수 URL의 특성에 맞게 간단하고 Private한 용도로 쓰거나, Internal 에서 유용하게 사용 하는것을 추천 드립니다 .
 
 Lambda 함수 URL은 API Gateway의 Lambda proxy Integration처럼 동작하므로, 클라이언트가 다른 경로(Resource)나 POST/GET등 다른 method를 쓰더라도 모두 Lambda 함수에서 처리하게 됩니다. 
-Lambda 함수 URL로 파일 전송시에 Lambda의 payload (https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)는 6MB까지 가능하여, API Gateway의 Payload (https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)인 10MB에 비하여 상대적으로 적습니다. 
+Lambda 함수 URL로 파일 전송시에 [Lambda의 payload](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)는 6MB까지 가능하여, [API Gateway의 Payload](https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)인 10MB에 비하여 상대적으로 적습니다. 
 
 
 ## Reference 
