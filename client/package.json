@@ -1,0 +1,20 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-crypto/sha256-browser": "^2.0.1",
+    "@aws-sdk/client-sts": "^3.118.1",
+    "@aws-sdk/credential-provider-node": "^3.118.1",
+    "@aws-sdk/protocol-http": "^3.110.0",
+    "aws-sdk": "^2.1163.0",
+    "xml2js": "^0.4.23"
+  }
+}
