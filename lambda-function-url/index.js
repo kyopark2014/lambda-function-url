@@ -1,5 +1,4 @@
 var aws = require('aws-sdk');
-var stepfunctions = new aws.StepFunctions({apiVersion: '2016-11-23'});
 
 const dynamo = new aws.DynamoDB.DocumentClient();
 

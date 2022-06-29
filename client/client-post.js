@@ -53,7 +53,7 @@ const run = async () => {
 
     aws.config.credentials.accessKeyId = data.Credentials.AccessKeyId;
     aws.config.credentials.sessionToken = data.Credentials.SessionToken;
-    console.log("modified credentials: %j", aws.config.credentials);
+    console.log("credentials: %j", aws.config.credentials);
 
     console.log('domain: '+domain);
 
