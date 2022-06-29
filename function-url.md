@@ -183,6 +183,9 @@ Lambda 함수 URL은 Custom URL을 생성할 수 없고, WAF나 Shield와 같은
 
 따라서, Lambda 함수 URL의 특성에 맞게 간단하고 Private한 용도로 쓰거나, Internal 에서 유용하게 사용 하는것을 추천 드립니다 .
 
+Lambda 함수 URL은 API Gateway의 Lambda proxy Integration처럼 동작하므로, 클라이언트가 다른 경로(Resource)나 POST/GET등 다른 method를 쓰더라도 모두 Lambda 함수에서 처리하게 됩니다. 
+Lambda 함수 URL로 파일 전송시에 Lambda의 payload (https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)는 6MB까지 가능하여, API Gateway의 Payload (https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)인 10MB에 비하여 상대적으로 적습니다. 
+
 
 ## Reference 
   
