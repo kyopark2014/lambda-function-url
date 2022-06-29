@@ -27,7 +27,7 @@
     }); 
 ```
 
-또한, 아래와 같이 Lambda가 DynamoDB를 사용할 수 있도록 읽기, 쓰기 퍼미션을 부여하고, Lambda 함수 URL을 정의 할 수 있습니다. 여기서, [resource-based policy] (https://docs.amazonaws.cn/en_us/lambda/latest/dg/access-control-resource-based.html)를 사용하기 위하여 fnUrlRole을 정의하여 사용합니다. 상세 코드는 [github] (https://github.com/kyopark2014/lambda-function-url/blob/main/cdk-lambda/lib/cdk-lambda-stack.ts)에서 확인 하실 수 있습니다.
+또한, 아래와 같이 Lambda가 DynamoDB를 사용할 수 있도록 읽기, 쓰기 퍼미션을 부여하고, Lambda 함수 URL을 정의 할 수 있습니다. 여기서, [resource-based policy](https://docs.amazonaws.cn/en_us/lambda/latest/dg/access-control-resource-based.html)를 사용하기 위하여 fnUrlRole을 정의하여 사용합니다. 상세 코드는 [github](https://github.com/kyopark2014/lambda-function-url/blob/main/cdk-lambda/lib/cdk-lambda-stack.ts)에서 확인 하실 수 있습니다.
 
 
 ```java
