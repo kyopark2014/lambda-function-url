@@ -5,11 +5,18 @@
 
 #### AWS SDK를 이용하여 temparary security credential 생성
 
-기 생성한 Role을 가지고 아래와 같이 STS를 통해 Temperary security credential을 생성합니다.
+상기의 기 생성한 Role을 가지고 아래와 같이 STS를 통해 Temperary security credential을 생성합니다. AWS CDK로 인프라 생성시 확인된, Lambda 함수 URL의 Endpoint 주소와 fnUrlRole의 Arn을 아래와 같이 업데이트 합니다. 
 
 ```java
-   const params = {
-        RoleArn: 'arn:aws:iam::123456789012:role/role-for-s3-fileserver',
+const domain = 'atkqt4btjeqnh3sarsdd5rhklm0mftdy.lambda-url.ap-northeast-2.on.aws';
+const roleArn = 'arn:aws:iam::677146750822:role/CdkLambdaStack-fnUrlRoleF3FB2EB9-1GN82O6QTTIND'
+```
+
+이제 아래와 같이 [AWS STS](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_temp.html) 를 접속하여 Temperary security credential을 가져온 후에 AWS config에 업데이트를 합니다. 
+
+```java
+    const params = {
+        RoleArn: roleArn,
         RoleSessionName: 'session',
     };
     const assumeRoleCommand = new AssumeRoleCommand(params);
@@ -22,6 +29,10 @@
     } catch (error) {
           console.log(error);
     }
+
+    aws.config.credentials.accessKeyId = data.Credentials.AccessKeyId;
+    aws.config.credentials.sessionToken = data.Credentials.SessionToken;
+    console.log("credentials: %j", aws.config.credentials);
 ```
 
 새로운 credential로 AWS의 Config를 업데이트 합니다.
@@ -32,16 +43,10 @@
     console.log("modified credentials: %j", aws.config.credentials);
 ```
 
-#### signed된 request 생성 
+이제 http request를 sign 한후 request에 대한 signature를 구합니다. 이후 아래와 같이 request를 Lambda 함수 URL의 Endpoint로 보내면 RESTful 기반의 API를 구현 할 수 있습니다.  상세한 코드는 [github](https://github.com/kyopark2014/lambda-function-url/blob/main/client/client-get.js)을 참조합니다.
 
-아래와 같이 signature를 구합니다.
 
 ```java
-    var region = 'ap-northeast-2';
-    var domain = 'hgwavninyisqd6utbvywn7drpe0mvkwp.lambda-url.ap-northeast-2.on.aws';
-    
-    console.log('domain: '+domain);
-
     var myService = 'lambda';
     var myMethod = 'GET';
     var myPath = '/';
@@ -76,6 +81,11 @@
     } catch(err) {
         console.log(err);
     }
+    
+    // request
+    performRequest(domain, signedRequest.headers, signedRequest.body, myPath, myMethod, function(response) {    
+        console.log('response: %j', response);
+    });
 ```
 
 아래와 같이 https로 Lambda Function URL에 접속을 합니다.
@@ -119,10 +129,9 @@ function performRequest(endpoint, headers, data, path, method, success) {
 } 
 ```
 
-상세한 코드는 [github code](https://github.com/kyopark2014/aws-security-token-service/blob/main/client/client-url.js)를 참조합니다.
 
 아래와 같이 client를 node로 실행합니다.
 
-$ node client-url.js
+$ node client-get.js
 
 
