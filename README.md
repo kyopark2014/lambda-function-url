@@ -1,6 +1,7 @@
 # Lambda Function URL
 
-여기에서는 Lambda Function URL에 대해 이해하고, [AWS CDK](https://github.com/kyopark2014/technical-summary/blob/main/cdk-introduction.md)로 Lambda funtion url을 생성하고 활용하는것에 대한 예제를 보여줍니다. 또한 Lambda funtional url의 보안을 IAM을 통해 수행되고 이를 위해 client에서 temperary security credential을 이용한 접속 방법도 가이드 합니다. 
+여기에서는 Lambda Function URL에 대해 이해하고, [AWS CDK](https://github.com/kyopark2014/technical-summary/blob/main/cdk-introduction.md)로 Lambda funtion url을 생성하고 활용하는것에 대한 예제를 보여줍니다. 또한 Lambda funtional url의 보안을 IAM을 통해 수행하도록, client에서 temperary security credential을 이용한 접속 방법을 설명합니다.
+
 
 ## Lambda Function URL 이란?
 
@@ -37,13 +38,13 @@ Temporary security credentials은 STS(Security Token Server)을 통해 획득하
  
 ## Lambda Function URL을 호출하는 Client 만들기
 
-[Lambda Function URL을 호출하는 Client 만들기](https://github.com/kyopark2014/lambda-function-url/tree/main/client)에서는 Temperary Security Credential을 이용하여 안전하게 Lambda Function URL을 호출하는 Cliet에 대해 설명합니다. 
+[Lambda Function URL을 호출하는 Client 만들기](https://github.com/kyopark2014/lambda-function-url/tree/main/client)에서는 Temporary Security Credential을 이용하여 안전하게 Lambda Function URL을 호출하는 Cliet에 대해 설명합니다. 
 
 ## Lambda Function URL 활용
 
 Lambda Function URL은 API Gateway의 Lambda proxy Integration처럼 동작하므로, 클라이언트가 다른 경로(Resource)나 POST/GET등 다른 method를 쓰더라도 모두 하나의 Lambda 에서 처리할 수 있습니다. 즉, Lambda Function URL을 사용함으로 구조를 단순화하고 쉽고 편리하게 API 서버를 생성하고 이용 할 수 있지만, Lambda Function URL은 Custom URL을 생성할 수 없는 단점도 가지고 있습니다. Lambda Function URL로 파일 전송시에 [Lambda의 payload](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)는 6MB까지 가능하여, [API Gateway의 Payload](https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)인 10MB에 비하여 상대적으로 적습니다. 
 
-Lambda Function URL은 WAF나 Shield와 같은 Security를 사용할 수 없습니다. CloudFront을 이용하여 이를 해결할 수 있으나 API Gateway를 제거하여 얻어진 장점이 사라집니다. 
+Lambda Function URL은 WAF와 같은 Security 서비스를 사용할 수 없습니다. 만약 L7 Layer의 WAF와 같은 보호가 필요한 경우에는 Lambda 앞단에 CloudFront를 넣는것을 검토할 수 있습니다. 
 
 
 Lambda Function URL의 특성에 맞게 잘 사용하면, 편리한 서비리스 서비스인 Lambda 용도를 더욱 확장하여 사용자의 비지니스 용도에 최적화 할수 있을것으로 보여집니다.  
