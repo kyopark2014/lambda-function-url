@@ -1,4 +1,3 @@
-   
 const { HttpRequest} = require("@aws-sdk/protocol-http");
 const { defaultProvider } = require("@aws-sdk/credential-provider-node");
 const { SignatureV4 } = require("@aws-sdk/signature-v4");
@@ -17,8 +16,8 @@ aws.config.getCredentials(function(err) {
 });
 console.log("current credentials: %j", aws.config.credentials);
 
-const domain = 'atkqt4btjeqnh3sarsdd5rhklm0mftdy.lambda-url.ap-northeast-2.on.aws';
-const roleArn = 'arn:aws:iam::677146750822:role/CdkLambdaStack-fnUrlRoleF3FB2EB9-1GN82O6QTTIND';
+const domain = 'j5qx4waffduqrenxplzd7zdbne0coxgp.lambda-url.ap-northeast-2.on.aws';
+const roleArn = 'arn:aws:iam::677146750822:role/CdkLambdaStack-fnUrlRoleF3FB2EB9-1DUX7O5K3EOQ3';
 const region = 'ap-northeast-2';
 const myMethod = 'POST';
 const myPath = '/';
@@ -52,8 +51,9 @@ const run = async () => {
     }
 
     aws.config.credentials.accessKeyId = data.Credentials.AccessKeyId;
+    aws.config.credentials.secretAccessKey = data.Credentials.SecretAccessKey;
     aws.config.credentials.sessionToken = data.Credentials.SessionToken;
-    console.log("credentials: %j", aws.config.credentials);
+    console.log("modified credentials: %j", aws.config.credentials);
 
     console.log('domain: '+domain);
 
@@ -73,7 +73,8 @@ const run = async () => {
 
     // Sign the request
     var signer = new SignatureV4({
-        credentials: defaultProvider(),
+        // credentials: defaultProvider(),
+        credentials: aws.config.credentials,   // temparary security credential
         region: region,
         service: myService,
         sha256: Sha256
