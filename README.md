@@ -2,6 +2,8 @@
 
 여기에서는 Lambda Function URL에 대해 이해하고, [AWS CDK](https://github.com/kyopark2014/technical-summary/blob/main/cdk-introduction.md)로 Lambda funtion url을 생성하고 활용하는것에 대한 예제를 보여줍니다. 또한 Lambda funtional url의 보안을 IAM을 통해 수행하도록, client에서 temperary security credential을 이용한 접속 방법을 설명합니다.
 
+이 Repository는 ["[AWS 기술 블로그] AWS Lambda 함수 URL을 이용하여 편리하고 안전한 API 서버와 클라이언트 만들기"](https://aws.amazon.com/ko/blogs/tech/creating-api-server-usig-aws-lambda-function-url/)로 Publish 되었습니다. 
+
 
 ## Lambda Function URL 이란?
 
@@ -69,3 +71,6 @@ Lambda Function URL의 특성에 맞게 잘 사용하면, 편리한 서비리스
 [Introducing Lambda Function URLs](https://dev.to/aws-builders/introducing-lambda-function-urls-4ahd)
 
 
+## Reference 
+
+[[AWS 기술 블로그] AWS Lambda 함수 URL을 이용하여 편리하고 안전한 API 서버와 클라이언트 만들기](https://aws.amazon.com/ko/blogs/tech/creating-api-server-usig-aws-lambda-function-url/)
